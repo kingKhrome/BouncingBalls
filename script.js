@@ -5,13 +5,14 @@ function setup() {
 }
 // 1 meter = 10 units
 let ball
+
 let x_acc = 0
-const y_acc = 98 *3
+const y_acc = 98
 
 let x_cor = 500
-let y_cor = 100
+let y_cor = 200
 
-let x_vel = 100
+let x_vel = 50
 let y_vel = 0
 colors = ['red','green','blue','yellow','black','pink']
 let color = 'red'
@@ -32,3 +33,18 @@ function draw() {
   }
   
 }
+
+
+
+class Ball {
+  function constructor (x_cor,y_cor,x_vel,y_vel,x_acc) {
+    this.x_cor = x_cor
+    this.y_cor = y_cor
+    this.x_vel = x_vel
+    this.y_vel = y_vel
+    this.x_acc = x_acc }
+  
+  function calculate() {
+    
+  }
+    
