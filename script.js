@@ -34,7 +34,7 @@ function draw() {
   
 }
 
-
+positions = []
 
 class Ball {
   function constructor (x_cor,y_cor,x_vel,y_vel,x_acc) {
@@ -45,6 +45,14 @@ class Ball {
     this.x_acc = x_acc 
     this.color = colors[Math.floor(Math.random() * colors.length)] }
   
+  function collisionCheck(){
+    for(let i=0; i<positions.length; i++) {
+      dist = ((positions[0] ** 2)- (this.x_cor**2) + (positions[1] ** 2)- (this.y_cor**2))
+      if dist == 0
+      
+    }
+    
+  }
   function simulate() {
     circle(this.x_cor,this.y_cor,20)
     this.x_cor = this.x_cor + this.x_vel/framerate
@@ -55,10 +63,14 @@ class Ball {
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
     color = colors[Math.floor(Math.random() * colors.length)]
-    fill(color) }
+    fill(color) 
+    return -1}
     
     if (this.x_cor >= 400 || this.x_cor <= 0) {
-    this.x_vel = -this.x_vel }
+    this.x_vel = -this.x_vel 
+    return -1}
+    this.collisionCheck()
+    
   }
     
   }
