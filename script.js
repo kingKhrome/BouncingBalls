@@ -42,9 +42,24 @@ class Ball {
     this.y_cor = y_cor
     this.x_vel = x_vel
     this.y_vel = y_vel
-    this.x_acc = x_acc }
+    this.x_acc = x_acc 
+    this.color = colors[Math.floor(Math.random() * colors.length)] }
   
-  function calculate() {
+  function simulate() {
+    circle(this.x_cor,this.y_cor,20)
+    this.x_cor = this.x_cor + this.x_vel/framerate
+    this.y_cor = this.y_cor + this.y_vel/framerate
+    this.x_vel = this.x_vel + this.x_acc/framerate
+    this.y_vel = this.y_vel + this.y_acc/framerate
+    
+    if (this.y_cor >= 400 || this.y_cor <= 0) {
+    this.y_vel = -this.y_vel
+    color = colors[Math.floor(Math.random() * colors.length)]
+    fill(color) }
+    
+    if (this.x_cor >= 400 || this.x_cor <= 0) {
+    this.x_vel = -this.x_vel }
+  }
     
   }
     
