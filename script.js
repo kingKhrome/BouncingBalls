@@ -1,41 +1,34 @@
-/* global createCanvas, loadImage, background, image, dvdImage */
+function setup() {
+  createCanvas(1000, 400);
+  frameRate(60)
 
-// The amazing variable x and y, which tell us where we are.
-let x = 1;
-let y = 1;
-// Canvas size
-let width = 800;
-let height = 600;
-// Logo size
-let logo_width = 200;
-let logo_height = 150;
-let velocity = 5;
-let xdirection = 1;
-let ydirection = 1;
-
-function setup(){
-  createCanvas(width, height)
-  // We only want to load the logo once.
-  dvdImage = loadImage("https://cdn.glitch.com/eaea72a4-ac6d-4777-b76e-f37d75959aa5%2Fdvd.jpeg?1515761833387")
 }
+// 1 meter = 10 units
+let ball
+let x_acc = 0
+const y_acc = 98 *3
 
-function draw(){
-  // shorthand for x_new = x_prev + 1
-  // try different values of incrementation... what happens if x is very large?  what if the increment is negative?
-  // We want the x to stop growing when...  for example (x > 800)
-  if (x > (width - logo_width)) {
-    xdirection = -1;
-  } else if (x < 0) {
-    xdirection = 1;
+let x_cor = 500
+let y_cor = 100
+
+let x_vel = 100
+let y_vel = 0
+colors = ['red','green','blue','yellow','black','pink']
+let color = 'red'
+
+function draw() {
+  background(220);
+  ball = circle(x_cor,y_cor,20)
+  x_cor += x_vel/60
+  x_vel += x_acc/60
+  if (x_cor <= 0 || x_cor >= 1000) {
+    x_vel = -x_vel}
+  y_cor += y_vel/60
+  y_vel += y_acc/60
+  if (y_cor >= 400 || y_cor <= 0) {
+    y_vel = -y_vel
+    color = colors[Math.floor(Math.random() * colors.length)];
+    fill(color)
   }
-  if (y > (height - logo_height)) {
-    ydirection = -1;
-  } else if (y < 0) {
-    ydirection = 1;
-  }
-  x += (velocity * xdirection);
-  y += (velocity * ydirection);
-  background(220)
-  // Draw the logo at the new position.
-  image(dvdImage, x, y, logo_width, logo_height)
+  
 }
