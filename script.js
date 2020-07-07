@@ -1,13 +1,15 @@
 /* global createCanvas, loadImage, background, image, dvdImage */
 
-// The amazing variable x.
+// The amazing variable x and y, which tell us where we are.
 let x = 1;
 let y = 1;
+// Canvas size
 let width = 800;
 let height = 600;
+// Logo size
 let logo_width = 200;
 let logo_height = 150;
-let velocity = 13;
+let velocity = 5;
 let xdirection = 1;
 let ydirection = 1;
 
