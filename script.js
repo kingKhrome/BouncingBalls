@@ -1,6 +1,6 @@
 let colors = ['red','green','blue','yellow','black','pink','gold']
 let positions = {} //used in collisionCheck
-let framerate = 120
+let framerate = 60
 let airResistance =.002
 let friction = .07
 
@@ -19,7 +19,7 @@ class Ball {
     this.x_vel = Math.floor(Math.random() * 51);
     this.y_vel = Math.floor(Math.random() * 51);
     this.x_acc = 0
-    this.y_acc = 10
+    this.y_acc = 30
     this.color = colors[Math.floor(Math.random() * colors.length)]
     this.total_velocity = (this.x_vel**2 + this.y_vel**2)**.5
     positions[this.name] = [this.x_cor,this.y_cor]
