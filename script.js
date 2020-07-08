@@ -9,13 +9,13 @@ function setup() {
 }
 
 class Ball {
-    constructor(x_cor,y_cor,name,x_vel,y_vel=0) {
+    constructor(name) {
     this.name = name
-    this.x_cor = x_cor
-    this.y_cor = y_cor
-    this.x_vel = x_vel
-    this.y_vel = y_vel
-    this.x_acc = 0
+    this.x_cor = Math.floor(Math.random() * 1001);
+    this.y_cor = Math.floor(Math.random() * 401);
+    this.x_vel = Math.floor(Math.random() * 51);
+    this.y_vel = Math.floor(Math.random() * 51);
+    this.x_acc = Math.floor(Math.random() * 101);
     this.y_acc = 98
     this.color = colors[Math.floor(Math.random() * colors.length)]
     positions[this.name] = [this.x_cor,this.y_cor]
@@ -25,7 +25,7 @@ class Ball {
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
        let dist = ((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2))
-       if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
+       //if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
     }
   } 
   
