@@ -24,8 +24,8 @@ class Ball {
     collisionCheck(){ //checks for collisions between balls --will add later
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
-       let dist = ((vals[0] ** 2)- (this.x_cor**2) + (vals[1] ** 2)- (this.y_cor**2))
-       if (dist !==0 && dist < 5) this.x_vel = -this.x_vel  
+       let dist = ((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2))
+       if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
     }
   } 
   
@@ -39,11 +39,11 @@ class Ball {
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
     this.color = colors[Math.floor(Math.random() * colors.length)]
-    return -1}
+    }
     
     if (this.x_cor >= 1000 || this.x_cor <= 0) {
     this.x_vel = -this.x_vel 
-    return -1}
+    }
     this.collisionCheck()
     
   }
@@ -51,34 +51,34 @@ class Ball {
   }
 
 
-let ball1 = new Ball(50,200,`ball1`,100)
-let ball2 = new Ball(150,200,`ball2`,-100)
-let ball3 = new Ball(250,200,`ball3`,100)
-let ball4 = new Ball(350,200,`ball4`,-100)
-let ball5 = new Ball(450,200,`ball5`,100)
-let ball6 = new Ball(550,200,`ball6`,-100)
-let ball7 = new Ball(650,200,`ball7`,100)
-let ball8 = new Ball(750,200,`ball8`,-100)
-let ball9 = new Ball(850,200,`ball9`,100)
-let ball10 = new Ball(950,200,`ball10`,-100)
+let ball1 = new Ball(33,33,`ball1`,176)
+let ball2 = new Ball(333,333,`ball2`,-255)
+let ball3 = new Ball(621,345,`ball3`,187)
+let ball4 = new Ball(444,200,`ball4`,-172)
+let ball5 = new Ball(123,200,`ball5`,300)
+let ball6 = new Ball(523,200,`ball6`,-133)
+let ball7 = new Ball(245,200,`ball7`,195)
+let ball8 = new Ball(735,200,`ball8`,-67)
+let ball9 = new Ball(888,200,`ball9`,78)
+let ball10 = new Ball(960,200,`ball10`,-245)
 
 function draw() {
   background(220)  
   function display(ball) {
     fill(ball.color)
-    circle(ball.x_cor,ball.y_cor,20)
+    circle(ball.x_cor,ball.y_cor,10)
     ball.simulate()
   }
   display(ball1)
-  display(ball2)
+  //display(ball2)
   display(ball3)
   display(ball4)
-  display(ball5)
+  //display(ball5)
   display(ball6)
   display(ball7)
-  display(ball8)
-  display(ball9)
-  display(ball10)
+  //display(ball8)
+  //display(ball9)
+  //display(ball10)
   
 
 }
