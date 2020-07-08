@@ -16,7 +16,7 @@ class Ball {
     this.x_vel = Math.floor(Math.random() * 51);
     this.y_vel = Math.floor(Math.random() * 51);
     this.x_acc = 0
-    this.y_acc = 20
+    this.y_acc = 10
     this.color = colors[Math.floor(Math.random() * colors.length)]
     positions[this.name] = [this.x_cor,this.y_cor]
   }
