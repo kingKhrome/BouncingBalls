@@ -21,11 +21,11 @@ class Ball {
     positions[this.name] = [this.x_cor,this.y_cor]
   }
   
-    collisionCheck(){ //checks for collisions between balls --will add later
+    collisionCheck(){ //checks for collisions between balls --will fix later
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
-       let dist = ((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2))
-       if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
+       let dist = Math.abs(((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2)))
+       if (dist !==0 && dist < 20) this.x_vel = -this.x_vel  
     }
   } 
   
