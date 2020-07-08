@@ -12,7 +12,7 @@ class Ball {
     constructor(name) {
     this.name = name
     this.x_cor = Math.floor(Math.random() * 951);
-    this.y_cor = Math.floor(Math.random() * 251);
+    this.y_cor = 400 - Math.floor(Math.random() * 251);
     this.x_vel = Math.floor(Math.random() * 51);
     this.y_vel = Math.floor(Math.random() * 51);
     this.x_acc = 0
@@ -24,8 +24,8 @@ class Ball {
     collisionCheck(){ //checks for collisions between balls --will fix later
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
-       let dist = Math.abs(((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2)))
-       if (dist !==0 && dist < 20) this.x_vel = -this.x_vel  
+       let dist = ((vals[i][0]- this.x_cor)**2 + (vals[i][1] - this.y_cor)**2)**.5 
+       if (dist !==0 && dist < 10) this.x_vel = -this.x_vel  
     }
   } 
   
