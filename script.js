@@ -1,4 +1,4 @@
-framerate = 60
+let framerate = 60
 function setup() {
   createCanvas(1000, 400);
   frameRate(framerate)
@@ -9,8 +9,8 @@ function setup() {
 
 
 
-colors = ['red','green','blue','yellow','black','pink']
-positions = []
+let colors = ['red','green','blue','yellow','black','pink']
+let positions = []
 
 
 function spawn(n) {
@@ -21,7 +21,7 @@ function spawn(n) {
 
 
 class Ball {
-  function constructor (x_cor,y_cor,x_vel,y_vel=0) {
+    constructor(x_cor,y_cor,x_vel,y_vel=0) {
     this.x_cor = x_cor
     this.y_cor = y_cor
     this.x_vel = x_vel
@@ -33,14 +33,14 @@ class Ball {
     circle(this.x_cor,this.y_cor,20)
   }
   
-  function collisionCheck(){
+    collisionCheck(){
     for(let i=0; i<positions.length; i++) {
-      dist = ((positions[0] ** 2)- (this.x_cor**2) + (positions[1] ** 2)- (this.y_cor**2))
+      let dist = ((positions[0] ** 2)- (this.x_cor**2) + (positions[1] ** 2)- (this.y_cor**2))
       if (dist !==0 && dist < 10) this.x_vel = -this.x_vel  
     }
     
   }
-  function simulate() {
+    simulate() {
     circle(this.x_cor,this.y_cor,20)
     this.x_cor = this.x_cor + this.x_vel/framerate
     this.y_cor = this.y_cor + this.y_vel/framerate
@@ -50,7 +50,7 @@ class Ball {
     
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
-    color = colors[Math.floor(Math.random() * colors.length)]
+    let color = colors[Math.floor(Math.random() * colors.length)]
     fill(color) 
     return -1}
     
@@ -63,9 +63,10 @@ class Ball {
     
   }
 
-ball = new Ball(100,200,100)
+let ball = new Ball(100,200,100)
+
 function draw() {
   background(220);
   ball.simulate()
-  circle(this.x_cor,this.y_cor,20)
+  console.log(ball.x_cor)
 }
