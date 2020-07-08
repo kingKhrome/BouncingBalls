@@ -25,7 +25,7 @@ class Ball {
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
        let dist = ((vals[i][0]- this.x_cor)**2 + (vals[i][1] - this.y_cor)**2)**.5 
-       if (dist !==0 && dist < 10) this.x_vel = -this.x_vel  
+       if (dist !==0 && dist < 20) this.x_vel = -this.x_vel  
     }
   } 
   
