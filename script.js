@@ -1,6 +1,8 @@
 let colors = ['red','green','blue','yellow','black','pink','gold']
 let positions = {} //used in collisionCheck
 let framerate = 120
+let airResistance =.01
+let friction = .01
 
 function setup() {
   createCanvas(1000, 400);
@@ -28,6 +30,12 @@ class Ball {
        if (dist !==0 && dist < 20) this.x_vel = -this.x_vel  
     }
   } 
+   decay() {
+     let total_velocity =(this.x_vel**2 + this.y_vel**2)**.5
+     this.x_vel = this.x_vel - (this.x_vel/total_velocity)*airResistance
+     this.y_vel = this.y_vel - (this.y_vel/total_velocity)*airResistance
+     
+   }
   
     simulate() {
     this.x_cor = this.x_cor + this.x_vel/framerate
@@ -44,6 +52,7 @@ class Ball {
     if (this.x_cor >= 1000 || this.x_cor <= 0) {
     this.x_vel = -this.x_vel 
     }
+    this.decay()
     this.collisionCheck()
     
   }
