@@ -1,6 +1,6 @@
 let colors = ['red','green','blue','yellow','black','pink','gold']
 let positions = {} //used in collisionCheck
-let framerate = 60
+let framerate = 120
 
 function setup() {
   createCanvas(1000, 400);
@@ -11,12 +11,12 @@ function setup() {
 class Ball {
     constructor(name) {
     this.name = name
-    this.x_cor = Math.floor(Math.random() * 1001);
-    this.y_cor = Math.floor(Math.random() * 401);
+    this.x_cor = Math.floor(Math.random() * 951);
+    this.y_cor = Math.floor(Math.random() * 251);
     this.x_vel = Math.floor(Math.random() * 51);
     this.y_vel = Math.floor(Math.random() * 51);
-    this.x_acc = Math.floor(Math.random() * 101);
-    this.y_acc = 98
+    this.x_acc = 0
+    this.y_acc = 20
     this.color = colors[Math.floor(Math.random() * colors.length)]
     positions[this.name] = [this.x_cor,this.y_cor]
   }
@@ -25,7 +25,7 @@ class Ball {
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
        let dist = ((vals[i][0] ** 2)- (this.x_cor**2) + (vals[i][1] ** 2)- (this.y_cor**2))
-       //if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
+       if (dist !==0 && dist < 2) this.x_vel = -this.x_vel  
     }
   } 
   
@@ -51,16 +51,16 @@ class Ball {
   }
 
 
-let ball1 = new Ball(33,33,`ball1`,176)
-let ball2 = new Ball(333,333,`ball2`,-255)
-let ball3 = new Ball(621,345,`ball3`,187)
-let ball4 = new Ball(444,200,`ball4`,-172)
-let ball5 = new Ball(123,200,`ball5`,300)
-let ball6 = new Ball(523,200,`ball6`,-133)
-let ball7 = new Ball(245,200,`ball7`,195)
-let ball8 = new Ball(735,200,`ball8`,-67)
-let ball9 = new Ball(888,200,`ball9`,78)
-let ball10 = new Ball(960,200,`ball10`,-245)
+let ball1 = new Ball(`ball1`)
+let ball2 = new Ball(`ball2`)
+let ball3 = new Ball(`ball3`)
+let ball4 = new Ball(`ball4`)
+let ball5 = new Ball(`ball5`)
+let ball6 = new Ball(`ball6`)
+let ball7 = new Ball(`ball7`)
+let ball8 = new Ball(`ball8`)
+let ball9 = new Ball(`ball9`)
+let ball10 = new Ball(`ball10`)
 
 function draw() {
   background(220)  
@@ -70,15 +70,15 @@ function draw() {
     ball.simulate()
   }
   display(ball1)
-  //display(ball2)
+  display(ball2)
   display(ball3)
   display(ball4)
-  //display(ball5)
+  display(ball5)
   display(ball6)
   display(ball7)
-  //display(ball8)
-  //display(ball9)
-  //display(ball10)
+  display(ball8)
+  display(ball9)
+  display(ball10)
   
 
 }
