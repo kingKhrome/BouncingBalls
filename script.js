@@ -1,8 +1,8 @@
 let colors = ['red','green','blue','yellow','black','pink','gold']
 let positions = {} //used in collisionCheck
 let framerate = 120
-let airResistance =.01
-let friction = .01
+let airResistance =.002
+let friction = .1
 
 function setup() {
   createCanvas(1000, 400);
@@ -20,6 +20,7 @@ class Ball {
     this.x_acc = 0
     this.y_acc = 10
     this.color = colors[Math.floor(Math.random() * colors.length)]
+    this.total_velocity = (this.x_vel**2 + this.y_vel**2)**.5
     positions[this.name] = [this.x_cor,this.y_cor]
   }
   
@@ -27,13 +28,14 @@ class Ball {
       let vals = Object.values(positions)
       for(let i=0; i<vals.length; i++) {
        let dist = ((vals[i][0]- this.x_cor)**2 + (vals[i][1] - this.y_cor)**2)**.5 
-       if (dist !==0 && dist < 20) this.x_vel = -this.x_vel  
+       if (dist !==0 && dist < 20) {
+         this.x_vel = -this.x_vel
+         this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction }
     }
   } 
    decay() {
-     let total_velocity =(this.x_vel**2 + this.y_vel**2)**.5
-     this.x_vel = this.x_vel - (this.x_vel/total_velocity)*airResistance
-     this.y_vel = this.y_vel - (this.y_vel/total_velocity)*airResistance
+     this.x_vel = this.x_vel - (this.x_vel/this.total_velocity)*airResistance
+     this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*airResistance
      
    }
   
@@ -46,11 +48,13 @@ class Ball {
     
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
-    this.color = colors[Math.floor(Math.random() * colors.length)]
+    this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
+    //this.color = colors[Math.floor(Math.random() * colors.length)]
     }
     
     if (this.x_cor >= 1000 || this.x_cor <= 0) {
-    this.x_vel = -this.x_vel 
+    this.x_vel = -this.x_vel
+    this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
     }
     this.decay()
     this.collisionCheck()
