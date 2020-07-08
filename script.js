@@ -2,10 +2,11 @@ let colors = ['red','green','blue','yellow','black','pink','gold']
 let positions = {} //used in collisionCheck
 let framerate = 120
 let airResistance =.002
-let friction = .1
+let friction = .07
 
 function setup() {
   createCanvas(1000, 400);
+  strokeWeight(0)
   frameRate(framerate)
   
 }
