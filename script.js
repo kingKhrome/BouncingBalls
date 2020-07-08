@@ -1,24 +1,12 @@
+let colors = ['red','green','blue','yellow','black','pink','gold']
+let positions = []
 let framerate = 60
+
 function setup() {
   createCanvas(1000, 400);
   frameRate(framerate)
-
+  
 }
-// 1 meter = 10 units
-
-
-
-
-let colors = ['red','green','blue','yellow','black','pink']
-let positions = []
-
-
-function spawn(n) {
-  while (n != 0) {
-    
-  }
-}
-
 
 class Ball {
     constructor(x_cor,y_cor,x_vel,y_vel=0) {
@@ -30,7 +18,6 @@ class Ball {
     this.y_acc = 98
     this.color = colors[Math.floor(Math.random() * colors.length)]
     //positions.push([this.x_cor,this.y_cor])
-    circle(this.x_cor,this.y_cor,20)
   }
   
     collisionCheck(){
@@ -41,7 +28,6 @@ class Ball {
     
   }
     simulate() {
-    circle(this.x_cor,this.y_cor,20)
     this.x_cor = this.x_cor + this.x_vel/framerate
     this.y_cor = this.y_cor + this.y_vel/framerate
     this.x_vel = this.x_vel + this.x_acc/framerate
@@ -51,7 +37,6 @@ class Ball {
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
     let color = colors[Math.floor(Math.random() * colors.length)]
-    fill(color) 
     return -1}
     
     if (this.x_cor >= 400 || this.x_cor <= 0) {
@@ -62,11 +47,18 @@ class Ball {
   }
     
   }
+  let ball = new Ball(100,200,100)
 
-let ball = new Ball(100,200,100)
+
+
+function spawn(n) {
+  while (n != 0) {
+    
+  }
+}
+
+
 
 function draw() {
-  background(220);
-  ball.simulate()
-  console.log(ball.x_cor)
+
 }
