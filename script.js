@@ -13,7 +13,7 @@ function setup() {
 
 class Ball {
     constructor(name) {
-    this.name = name
+    this.name = name.toString(10)
     this.x_cor = Math.floor(Math.random() * 951);
     this.y_cor = 400 - Math.floor(Math.random() * 251);
     this.x_vel = Math.floor(Math.random() * 51);
@@ -35,6 +35,7 @@ class Ball {
     }
   } 
    decay() {
+     return -1
      this.x_vel = this.x_vel - (this.x_vel/this.total_velocity)*airResistance
      this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*airResistance
      
@@ -49,13 +50,13 @@ class Ball {
     
     if (this.y_cor >= 400 || this.y_cor <= 0) {
     this.y_vel = -this.y_vel
-    this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
+    //this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
     //this.color = colors[Math.floor(Math.random() * colors.length)]
     }
     
     if (this.x_cor >= 1000 || this.x_cor <= 0) {
     this.x_vel = -this.x_vel
-    this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
+    //this.y_vel = this.y_vel - (this.y_vel/this.total_velocity)*friction
     }
     this.decay()
     this.collisionCheck()
@@ -64,17 +65,16 @@ class Ball {
     
   }
 
+n = prompt('How many balls?')
+let balls = []
+function makeBalls(n) {
+  for(let i=0; i<n;i++) {
+    balls.push(new Ball(i))
+  }
+    
+}
+makeBalls(20)
 
-let ball1 = new Ball(`ball1`)
-let ball2 = new Ball(`ball2`)
-let ball3 = new Ball(`ball3`)
-let ball4 = new Ball(`ball4`)
-let ball5 = new Ball(`ball5`)
-let ball6 = new Ball(`ball6`)
-let ball7 = new Ball(`ball7`)
-let ball8 = new Ball(`ball8`)
-let ball9 = new Ball(`ball9`)
-let ball10 = new Ball(`ball10`)
 
 function draw() {
   background(220)  
@@ -83,16 +83,9 @@ function draw() {
     circle(ball.x_cor,ball.y_cor,10)
     ball.simulate()
   }
-  display(ball1)
-  display(ball2)
-  display(ball3)
-  display(ball4)
-  display(ball5)
-  display(ball6)
-  display(ball7)
-  display(ball8)
-  display(ball9)
-  display(ball10)
+  balls.forEach(display)
+  
+  
   
 
 }
