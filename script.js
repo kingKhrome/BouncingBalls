@@ -19,7 +19,7 @@ class Ball {
     this.x_vel = Math.floor(Math.random() * 51);
     this.y_vel = Math.floor(Math.random() * 51);
     this.x_acc = 0
-    this.y_acc = 30
+    this.y_acc = 50
     this.color = colors[Math.floor(Math.random() * colors.length)]
     this.total_velocity = (this.x_vel**2 + this.y_vel**2)**.5
     positions[this.name] = [this.x_cor,this.y_cor]
@@ -65,7 +65,7 @@ class Ball {
     
   }
 
-n = prompt('How many balls?')
+//n = parseInt(prompt('How many balls?'))
 let balls = []
 function makeBalls(n) {
   for(let i=0; i<n;i++) {
@@ -73,7 +73,8 @@ function makeBalls(n) {
   }
     
 }
-makeBalls(20)
+let n = 10
+makeBalls(n)
 
 
 function draw() {
