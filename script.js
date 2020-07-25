@@ -16,10 +16,10 @@ class Ball {
     this.name = name.toString(10)
     this.x_cor = Math.floor(Math.random() * 951);
     this.y_cor = 400 - Math.floor(Math.random() * 251);
-    this.x_vel = Math.floor(Math.random() * 51);
-    this.y_vel = Math.floor(Math.random() * 51);
+    this.x_vel = Math.floor(Math.random() * 201);
+    this.y_vel = Math.floor(Math.random() * 101);
     this.x_acc = 0
-    this.y_acc = 50
+    this.y_acc = 200
     this.color = colors[Math.floor(Math.random() * colors.length)]
     this.total_velocity = (this.x_vel**2 + this.y_vel**2)**.5
     positions[this.name] = [this.x_cor,this.y_cor]
